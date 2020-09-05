@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Presentation these pro</title>
+
+  <!-- Bootstrap core CSS -->
+  
+  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/full-width-pics.css') }}">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Estimation temps de test</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header - set the background image for the header in the line below -->
+  <header class="py-5 bg-image-full" style="background-image: url('https://unsplash.it/1900/1080?image=1076');">
+    <img class="img-fluid d-block mx-auto" src="static/images/image_logo.jpeg" alt="logo">
+  </header>
+
+  <!-- Content section -->
+  <section class="py-5">
+    <div class="container">
+      <h1>Bienvenue sur le site de conception personnalisée</h1>
+      <p class="lead">Nous personnalisons votre voiture en fonction de vos choix.</p>
+      <div class="container"></div>
+      <p>Merci de remplir le formulaire pour déterminer le temps d'éssai.</p>
+    </div>
+  </section>
+
+  <!-- Image element - set the background image for the header in the line below -->
+  <div class="py-5 bg-image-full" style="background-image: url('https://unsplash.it/1900/1080?image=1081');">
+    <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
+    <div class="container" style="height: 500px;">
+      <form action="{{ url_for('predict')}}" method="post">
+       <div class="row">
+        <div class="col-lg-6">
+         <label for="element_1">Roues: </label>
+         <input type="text" name="element_1" placeholder="Roues" required="required" />
+         <br>
+        </div>
+        <div class="col-lg-6">
+          <label for="element_2">Clé: </label>
+          <input type="text" name="element_2" placeholder="Clé" required="required" />
+          <br>
+         </div>
+       </div>
+       <br>
+       <div class="row">
+        <div class="col-lg-6">
+         <label for="element_3">Connectique: </label>
+         <input type="text" name="element_3" placeholder="Connectique" required="required" />
+         <br>
+        </div>
+        <div class="col-lg-6">
+          <label for="element_4">Direction: </label>
+          <input type="text" name="element_4" placeholder="Direction" required="required" />
+          <br>
+         </div>
+       </div>
+       <br>
+       <div class="row">
+        <div class="col-lg-6">
+         <label for="element_5">Injection: </label>
+         <input type="text" name="element_5" placeholder="Injection" required="required" />
+         <br>
+        </div>
+        <div class="col-lg-6">
+          <label for="element_6">Micromoteur: </label>
+          <input type="text" name="element_6" placeholder="Micromo" required="required" />
+          <br>
+         </div>
+       </div>
+       <br>
+       <div class="row">
+        <div class="col-lg-6">
+         <label for="element_7">Mini Haut-Parleur: </label>
+         <input type="text" name="element_7" placeholder="Mini-Haut-Parleur" required="required" />
+         <br>
+        </div>
+        <div class="col-lg-6">
+          <label for="element_8">Ventillation: </label>
+          <input type="text" name="element_8" placeholder="Ventillation" required="required" />
+          <br>
+        </div>
+       </div>
+       <br>
+       <div class="row">
+        <div class="col-lg-4"></div>
+        <button type="submit" class="btn btn-primary">Prediction du temps de test</button>
+      </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Content section -->
+  <section class="py-5">
+    <div class="container" style="height: 600px;">
+      <h1>Votre temps de test est :{{ prediction_text }} Heures</h1>
+      <div class="container">
+        <div class="row" style="margin-left: 100px;">
+          <div class="card">
+            <h5 class="card-header"> Valeur moyenne des temps d'essais</h5>
+              <div id="container_1" style="height:300% ;width: 200%;"></div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <p class="lead"style="margin-left: 300px;">Merci et à bientot pour votre livraison ! </p>
+      
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>   
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="static/js/jauge.js"></script>
+  <script src="static/vendor/jquery/jquery.min.js"></script>
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
